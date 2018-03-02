@@ -1,0 +1,24 @@
+{
+  "name": "moling",
+  "version": "1.0.0",
+  "description": "新账号通知",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . 魔灵账号 --platform=darwin --arch=x64 --icon=./asset/j.icns --out ./dist --version 1.0 --overwrite"
+  },
+  "repository": "",
+  "keywords": [
+    "魔灵",
+    "交易猫"
+  ],
+  "author": "QiaChen",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "~1.8.2",
+    "electron-packager": "^11.0.1"
+  },
+  "dependencies": {
+    "sleep": "^5.1.1"
+  }
+}
