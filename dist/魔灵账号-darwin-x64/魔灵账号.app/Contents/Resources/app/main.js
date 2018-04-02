@@ -34,10 +34,31 @@ function getInfo(){
     }
     netuse = true;
     let request = net.request('https://m.jiaoyimao.com/fe/ajax/goods/?gameId=498&r=1&extConditions=%7B%22lowerPrice%22%3A%22100%22%7D&page=1')
+    
+    request.on('error', (error) => {
+          let myNotification = new Notification({
+              icon: path.join(__dirname,'asset/no.jpg'),
+              title:'请求错误',
+              body: 'request错误'+error
+          })
+          myNotification.show()
+          netuse =false
+      })
+
     request.on('response', (response) => {
       res = ""
       response.on('data', (chunk) => {
         res = res+chunk
+      })
+      
+      response.on('error', (error) => {
+          let myNotification = new Notification({
+              icon: path.join(__dirname,'asset/no.jpg'),
+              title:'请求错误',
+              body: 'response错误：'+error
+          })
+          netuse =false
+          myNotification.show()
       })
       response.on('end', () => {
         netuse =false
